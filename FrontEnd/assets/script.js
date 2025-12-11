@@ -6,6 +6,9 @@ async function getWorks() {
     // Affichage des projets dans la gallerie
     const gallery = document.querySelector(".gallery");
 
+    // Suppression contenu HTML des projets
+    gallery.innerHTML = "";
+
     works.forEach(work => {
         const workContent = document.createElement("figure");
         const workImg = document.createElement("img");
