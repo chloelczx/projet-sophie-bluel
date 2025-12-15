@@ -38,7 +38,7 @@ async function getCategories() {
     filters.classList.add("filters");
 
     const btnAll = document.createElement("button");
-    btnAll.classList.add("filter");
+    btnAll.classList.add("filter", "active");
     btnAll.textContent = "Tous";
     filters.appendChild(btnAll);
 

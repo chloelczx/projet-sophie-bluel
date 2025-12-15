@@ -136,13 +136,20 @@ li:hover {
 }
 
 .filter {
+	cursor: pointer;
 	color: #1D6154;
 	font-family: 'syne';
 	font-size: 16px;
 	background-color: transparent;
 	border: 1px solid #1D6154;
 	border-radius: 60px;
+	min-width: 100px;
 	padding: 7px 14px;
+}
+
+.filter:hover, .filter.active {
+	color: white;
+	background-color: #1D6154;
 }
 
 .gallery {
