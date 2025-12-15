@@ -37,6 +37,11 @@ async function getCategories() {
     const filters = document.createElement("div");
     filters.classList.add("filters");
 
+    const btnAll = document.createElement("button");
+    btnAll.classList.add("filter");
+    btnAll.textContent = "Tous";
+    filters.appendChild(btnAll);
+
     categories.forEach(category => {
         const btnFilter = document.createElement("button");
         btnFilter.classList.add("filter");
