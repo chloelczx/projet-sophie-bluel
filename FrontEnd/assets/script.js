@@ -25,3 +25,9 @@ async function getWorks() {
 }
 
 getWorks();
+
+// Appel API pour récupérer les catégories de projets
+async function getCategories() {
+    const categoriesResponse = await fetch("http://localhost:5678/api/categories");
+    const categories = await categoriesResponse.json();
+}
