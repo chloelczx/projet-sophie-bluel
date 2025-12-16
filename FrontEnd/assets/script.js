@@ -64,3 +64,13 @@ async function getCategories() {
 }
 
 getCategories();
+
+// Fonction de gestion des filtres au clic
+function clicFilter () {
+    const filtersBtn = document.querySelector("filter");
+
+    filtersBtn.forEach (button => {
+        button.addEventListener("click", () => {
+        });
+    });
+}
