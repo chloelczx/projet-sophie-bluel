@@ -65,6 +65,9 @@ async function getCategories() {
     });
 
     portfolio.insertBefore(filters, gallery);
+
+    // Appel fonction de gestion des filtres au clic
+    clicFilter();
 }
 
 getCategories();
@@ -73,7 +76,7 @@ getCategories();
 
 // Fonction de gestion des filtres au clic
 function clicFilter () {
-    const filtersBtn = document.querySelector("filter");
+    const filtersBtn = document.querySelectorAll(".filter");
 
     filtersBtn.forEach (button => {
         button.addEventListener("click", () => {
