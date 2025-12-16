@@ -1,6 +1,8 @@
 const gallery = document.querySelector(".gallery");
 let allWorks = [];
 
+
+
 // Fonction d'affichage des projets dans la gallerie
 function displayWorks(works) {
     // Suppression contenu HTML des projets
@@ -30,6 +32,8 @@ async function getWorks() {
 }
 
 getWorks();
+
+
 
 // Appel API pour récupérer les catégories de projets
 async function getCategories() {
@@ -65,15 +69,27 @@ async function getCategories() {
 
 getCategories();
 
+
+
 // Fonction de gestion des filtres au clic
 function clicFilter () {
     const filtersBtn = document.querySelector("filter");
 
     filtersBtn.forEach (button => {
         button.addEventListener("click", () => {
+            
             // Changement du bouton actif
             filtersBtn.forEach (btn => btn.classList.remove("active"));
             button.classList.add("active");
+
+            // Filtrage des travaux : comparaison catégories travaux / filtres
+            const category = button.dataset.workCategory;
+            if (category === "all") {
+             displayWorks(allWorks);
+            } else {
+                const filteredWorks = allWorks.filter(work => work.categoryId === Number(category));
+                displayWorks(filteredWorks);
+            }
         });
     });
 }
