@@ -41,15 +41,21 @@ async function getCategories() {
     const filters = document.createElement("div");
     filters.classList.add("filters");
 
+    // Intégration des boutons
     const btnAll = document.createElement("button");
     btnAll.classList.add("filter", "active");
     btnAll.textContent = "Tous";
+    // Bouton "Tous" lié à toutes les catégories de travaux
+    btnAll.dataset.workCategory = "all";
+
     filters.appendChild(btnAll);
 
     categories.forEach(category => {
         const btnFilter = document.createElement("button");
         btnFilter.classList.add("filter");
         btnFilter.textContent = category.name;
+        // Chaque bouton lié à une catégorie de travaux
+        btnFilter.dataset.workCategory = category.id;
 
         filters.appendChild(btnFilter);
     });
