@@ -71,6 +71,9 @@ function clicFilter () {
 
     filtersBtn.forEach (button => {
         button.addEventListener("click", () => {
+            // Changement du bouton actif
+            filtersBtn.forEach (btn => btn.classList.remove("active"));
+            button.classList.add("active");
         });
     });
 }
