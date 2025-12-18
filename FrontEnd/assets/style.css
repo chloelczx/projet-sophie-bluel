@@ -50,16 +50,16 @@ table {
 body {
 	max-width: 1140px;
 	margin:auto;
-	font-family: 'Work Sans' ;
+	font-family: 'Work Sans';
 	font-size: 14px;
 }
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
 }
 section {
-	margin: 50px 0
+	margin: 50px 0;
 }
 
 h1{
@@ -68,7 +68,7 @@ h1{
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
 }
 
 h1 > span {
@@ -82,7 +82,7 @@ h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
 }
 nav ul {
 	display: flex;
@@ -95,6 +95,15 @@ nav li {
 	font-size: 1.2em;
 }
 
+
+
+/* Ajout du style du lien actif */
+nav li.current {
+	font-weight: 600;
+}
+
+
+
 li:hover {
 	color: #B1663C;
 }
@@ -103,7 +112,7 @@ li:hover {
 	align-items: center;
 }
 #introduction figure {
-	flex: 1
+	flex: 1;
 }
 #introduction img {
 	display: block;
@@ -112,7 +121,7 @@ li:hover {
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
 }
 #introduction h2 {
 	margin-bottom: 1em;
@@ -126,31 +135,35 @@ li:hover {
 	margin-bottom: 1em;
 }
 
+
+
 /* Ajout du style des filtres */
 .filters {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
-	margin: 50px 0;
+	margin-bottom: 30px;
 }
 
 .filter {
 	cursor: pointer;
 	color: #1D6154;
 	font-family: 'syne';
-	font-size: 16px;
+	font-size: 1.2em;
 	background-color: transparent;
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	min-width: 100px;
-	padding: 7px 14px;
+	padding: 10px 15px;
 }
 
 .filter:hover, .filter.active {
 	color: white;
 	background-color: #1D6154;
 }
+
+
 
 .gallery {
 	width: 100%;
@@ -166,7 +179,7 @@ li:hover {
 }
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
 #contact > * {
 	text-align: center;
@@ -204,12 +217,49 @@ input[type="submit"]{
 	margin : 2em auto ;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
 }
+
+
+
+/* Ajout du style du formulaire login */
+#login {
+	width: 50%;
+	margin: auto;
+	padding: 100px 0 200px 0;
+}
+
+#login > * {
+	text-align: center;
+}
+
+#login form {
+	text-align: left;
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#login input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#login label {
+	margin: 2em 0 1em 0;
+}
+
+#login a {
+	color: #3D3D3D;
+	display: block;
+}
+
+
 
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
 }
-
