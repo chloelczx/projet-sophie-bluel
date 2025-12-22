@@ -251,6 +251,12 @@ input[type="submit"]:hover {
 	display: block;
 }
 
+/* Ajout du style du message d'erreur */
+.login-error {
+	color: #B1663C;
+	margin: 0 auto 2em auto;
+}
+
 
 
 footer {
