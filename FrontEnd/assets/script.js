@@ -136,6 +136,16 @@ function editBanner() {
 
 // Fonction de déconnexion du mode édition
 function logout() {
+    const loginLink = document.querySelector(".login-link");
+
+    if (loginLink) {
+        loginLink.textContent = "logout";
+
+        loginLink.addEventListener("click", () => {
+            localStorage.removeItem("token");
+            window.location.reload();
+        });
+    }
 }
 
 // Fonction bouton d'édition
