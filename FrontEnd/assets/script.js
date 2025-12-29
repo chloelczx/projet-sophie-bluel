@@ -70,6 +70,11 @@ async function getCategories() {
 
     // Appel fonction de gestion des filtres au clic
     clicFilter();
+
+    // Appel fonction filtres masqués du mode édition lors d'une connexion
+    if (token) {
+        hideFilters();
+    }
 }
 
 getCategories();
@@ -109,8 +114,7 @@ if (token) {
 // Fonction d'affichage page d'accueil lors d'une connexion
 function editHomepage() {
     editBanner();
-    hideFilters();
-    Logout();
+    logout();
     editBtn();
 }
 
@@ -128,4 +132,20 @@ function editBanner() {
     banner.appendChild(bannerIcon);
     banner.appendChild(bannerText);
     document.body.prepend(banner);
+}
+
+// Fonction de déconnexion du mode édition
+function logout() {
+}
+
+// Fonction bouton d'édition
+function editBtn() {
+}
+
+// Fonction filtres masqués du mode édition
+function hideFilters() {
+    const filtersContainer = document.querySelector(".filters");
+    if (filtersContainer) {
+        filtersContainer.style.display = "none";
+    }
 }
