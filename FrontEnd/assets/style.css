@@ -47,6 +47,20 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+
+/* Ajout du style de la bannière "Mode édition" */
+.edit-banner {
+	color: white;
+	font-size: 16px;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	padding: 25px 0;
+}
+/** **/
+
 body {
 	font-family: 'Work Sans';
 	font-size: 14px;
@@ -93,14 +107,11 @@ nav li {
 	font-size: 1.2em;
 }
 
-
-
 /* Ajout du style du lien actif */
 nav li.current {
 	font-weight: 600;
 } 
-
-
+/** **/
 
 li:hover {
 	color: #B1663C;
@@ -131,8 +142,6 @@ li:hover {
 	margin-bottom: 1em;
 }
 
-
-
 /* Ajout du style des filtres */
 .filters {
 	display: flex;
@@ -158,8 +167,7 @@ li:hover {
 	color: white;
 	background-color: #1D6154;
 }
-
-
+/** **/
 
 .gallery {
 	width: 100%;
@@ -211,8 +219,6 @@ input[type="submit"] {
 	border-radius: 60px;
 }
 
-
-
 /* Ajout du style du formulaire login */
 #login {
 	width: 50%;
@@ -250,14 +256,14 @@ input[type="submit"]:hover {
 	color: #3D3D3D;
 	display: block;
 }
+/** **/
 
 /* Ajout du style du message d'erreur */
 .login-error {
 	color: #B1663C;
 	margin: 0 auto 2em auto;
 }
-
-
+/** **/
 
 footer {
 	background-color: white;

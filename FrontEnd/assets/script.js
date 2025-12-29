@@ -1,3 +1,5 @@
+// Variables globales
+const token = localStorage.getItem("token");
 const gallery = document.querySelector(".gallery");
 let allWorks = [];
 
@@ -95,4 +97,35 @@ function clicFilter () {
             }
         });
     });
+}
+
+
+
+// Appel fonction d'affichage page d'accueil lors d'une connexion
+if (token) {
+    editHomepage();
+}
+
+// Fonction d'affichage page d'accueil lors d'une connexion
+function editHomepage() {
+    editBanner();
+    hideFilters();
+    Logout();
+    editBtn();
+}
+
+// Fonction d'affichage de la bannière "Mode édition"
+function editBanner() {
+    const banner = document.createElement("div");
+    banner.classList.add("edit-banner");
+
+    const bannerIcon = document.createElement("i");
+    bannerIcon.classList.add("fa-regular", "fa-pen-to-square");
+
+    const bannerText = document.createElement("span");
+    bannerText.textContent = "Mode édition";
+
+    banner.appendChild(bannerIcon);
+    banner.appendChild(bannerText);
+    document.body.prepend(banner);
 }
