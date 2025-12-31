@@ -108,29 +108,29 @@ function clicFilter () {
 
 // Appel fonction d'affichage page d'accueil lors d'une connexion
 if (token) {
-    editHomepage();
+    loggedInHomepage();
 }
 
 // Fonction d'affichage page d'accueil lors d'une connexion
-function editHomepage() {
-    editBanner();
+function loggedInHomepage() {
+    editModeBanner();
     logout();
-    editBtn();
+    editModeBtn();
 }
 
 // Fonction d'affichage de la bannière "Mode édition"
-function editBanner() {
+function editModeBanner() {
     const banner = document.createElement("div");
     banner.classList.add("edit-banner");
 
     const bannerIcon = document.createElement("i");
     bannerIcon.classList.add("fa-regular", "fa-pen-to-square");
 
-    const bannerText = document.createElement("span");
-    bannerText.textContent = "Mode édition";
+    const bannerTxt = document.createElement("span");
+    bannerTxt.textContent = "Mode édition";
 
     banner.appendChild(bannerIcon);
-    banner.appendChild(bannerText);
+    banner.appendChild(bannerTxt);
     document.body.prepend(banner);
 }
 
@@ -149,7 +149,26 @@ function logout() {
 }
 
 // Fonction bouton d'édition
-function editBtn() {
+function editModeBtn() {
+    const portfolioTitle = document.querySelector("#portfolio h2");
+
+    const portfolioTitleWrapper = document.createElement("div");
+    portfolioTitleWrapper.classList.add("title-wrapper");
+    portfolioTitle.replaceWith(portfolioTitleWrapper);
+    portfolioTitleWrapper.appendChild(portfolioTitle);
+
+    const editBtnContainer = document.createElement("div");
+    editBtnContainer.classList.add("edit-btn");
+
+    const editBtnIcon = document.createElement("i");
+    editBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+
+    const editBtnTxt = document.createElement("span");
+    editBtnTxt.textContent = "modifier";
+
+    editBtnContainer.appendChild(editBtnIcon);
+    editBtnContainer.appendChild(editBtnTxt);
+    portfolioTitleWrapper.appendChild(editBtnContainer);
 }
 
 // Fonction filtres masqués du mode édition

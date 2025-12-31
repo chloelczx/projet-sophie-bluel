@@ -142,6 +142,27 @@ li:hover {
 	margin-bottom: 1em;
 }
 
+/* Ajout du style du bouton "modifier" */
+#portfolio .title-wrapper h2 {
+	margin-bottom: 0;
+}
+
+.title-wrapper {
+	margin-bottom: 30px;
+	position: relative;
+}
+
+.edit-btn {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	position: absolute;
+	top: 25%;
+	right: 32%;
+}
+/** **/
+
 /* Ajout du style des filtres */
 .filters {
 	display: flex;

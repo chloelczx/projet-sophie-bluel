@@ -2,12 +2,12 @@ const loginForm = document.querySelector("form");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 
+
+
 // Création du message d'erreur
 const errorMessage = document.createElement("p");
 errorMessage.classList.add("login-error");
 errorMessage.textContent = "Erreur dans l'identifiant ou le mot de passe";
-
-
 
 // Ecoute de l'événement : envoi du formulaire
 loginForm.addEventListener("submit", async (event) => {
