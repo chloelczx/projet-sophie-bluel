@@ -111,6 +111,51 @@
 			</nav>
 		</footer>
 
+		<!-- Ajout de la modale -->
+		<aside id="modal">
+			<div class="modal-wrapper">
+				<button class="close-modal" aria-label="Arrêter la modification">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+
+				<div class="modal-gallery">
+					<h3>Galerie photo</h3>
+					<div class="modal-works"></div>
+					<hr>
+					<input type="submit" id="open-modal-form" value="Ajouter une photo">
+				</div>
+
+				<div class="modal-form">
+					<button class="back-modal-gallery" aria-label="Retour à la galerie">
+					<i class="fa-solid fa-arrow-left"></i>
+					</button>
+
+					<h3>Ajout photo</h3>
+
+					<form class="add-work-form">
+						<div class="upload-image">
+							<i class="fa-regular fa-image"></i>
+							<label class="upload-btn" for="upload-btn">+ Ajouter photo</label>
+							<input type="file" name="image" id="upload-btn" accept="image/jpg, image/png">
+							<p class="image-info">jpg, png : 4mo max</p>
+						</div>
+
+						<label for="work-title">Titre</label>
+						<input type="text" name="title" id="work-title">
+
+						<label for="work-category">Catégorie</label>
+						<select name="category" id="work-category">
+							<option value=""></option>
+						</select>
+
+						<hr>
+						
+						<input type="submit" id="upload-work" value="Valider">
+					</form>
+				</div>
+			</div>
+		</aside> 
+
 		<!-- Ajout de la balise script du fichier script.js -->
 		<script src="./assets/script.js"></script>
 	</body>

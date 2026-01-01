@@ -49,7 +49,7 @@ table {
 /** end reset css**/
 
 /* Ajout du style de la bannière "Mode édition" */
-.edit-banner {
+.edit-mode-banner {
 	color: white;
 	font-size: 16px;
 	background-color: black;
@@ -152,7 +152,7 @@ li:hover {
 	position: relative;
 }
 
-.edit-btn {
+.edit-mode-btn {
 	cursor: pointer;
 	display: flex;
 	align-items: center;

@@ -121,7 +121,7 @@ function loggedInHomepage() {
 // Fonction d'affichage de la bannière "Mode édition"
 function editModeBanner() {
     const banner = document.createElement("div");
-    banner.classList.add("edit-banner");
+    banner.classList.add("edit-mode-banner");
 
     const bannerIcon = document.createElement("i");
     bannerIcon.classList.add("fa-regular", "fa-pen-to-square");
@@ -158,7 +158,7 @@ function editModeBtn() {
     portfolioTitleWrapper.appendChild(portfolioTitle);
 
     const editBtnContainer = document.createElement("div");
-    editBtnContainer.classList.add("edit-btn");
+    editBtnContainer.classList.add("edit-mode-btn");
 
     const editBtnIcon = document.createElement("i");
     editBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
