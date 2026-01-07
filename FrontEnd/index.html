@@ -112,7 +112,7 @@
 		</footer>
 
 		<!-- Ajout de la modale -->
-		<aside id="modal">
+		<aside id="modal" aria-hidden="true" aria-label="Modifier les travaux">
 			<div class="modal-wrapper">
 				<button class="close-modal" aria-label="Arrêter la modification">
 					<i class="fa-solid fa-xmark"></i>
@@ -136,16 +136,16 @@
 						<div class="upload-image">
 							<i class="fa-regular fa-image"></i>
 							<label class="upload-btn" for="upload-btn">+ Ajouter photo</label>
-							<input type="file" name="image" id="upload-btn" accept="image/jpg, image/png">
+							<input type="file" name="image" id="upload-btn" accept="image/jpg, image/png" required>
 							<p class="image-info">jpg, png : 4mo max</p>
 						</div>
 
 						<label for="work-title">Titre</label>
-						<input type="text" name="title" id="work-title">
+						<input type="text" name="title" id="work-title" required>
 
 						<label for="work-category">Catégorie</label>
 						<div class="select-wrapper">
-							<select name="category" id="work-category"></select>
+							<select name="category" id="work-category" required></select>
 							<i class="fa-solid fa-chevron-down"></i>
 						</div>
 
