@@ -386,6 +386,21 @@ footer nav ul {
 	width: 100%;
 }
 
+.delete-work-btn {
+	cursor: pointer;
+	color: white;
+	font-size: 10px;
+	background-color: black;
+	border: none;
+	border-radius: 2px;
+	width: 17px;
+	height: 17px;
+	padding: 0;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+
 .open-modal-form {
 	font-family: 'Syne';
 	font-weight: 700;

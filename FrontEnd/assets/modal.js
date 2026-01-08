@@ -19,6 +19,7 @@ function displayWorksInModal (allWorks) {
         const deleteWorkIcon = document.createElement("i");
         deleteWorkIcon.classList.add("fa-solid", "fa-trash-can");
 
+        deleteWorkBtn.appendChild(deleteWorkIcon);
         modalWorkContent.appendChild(modalWorkImg);
         modalWorkContent.appendChild(deleteWorkBtn);
         modalWorksContainer.append(modalWorkContent);
