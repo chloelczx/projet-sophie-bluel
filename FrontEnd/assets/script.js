@@ -1,7 +1,9 @@
 // Variables globales
-const token = localStorage.getItem("token");
 const gallery = document.querySelector(".gallery");
 let allWorks = [];
+
+const loginLink = document.querySelector(".login-link");
+const token = localStorage.getItem("token");
 
 
 
@@ -106,6 +108,13 @@ function clicFilter () {
 
 
 
+// Lien page de connexion au menu "login" de la page d'accueil
+loginLink.addEventListener("click", () => {
+    window.location.href = "admin.html";
+});
+
+
+
 // Appel fonction d'affichage page d'accueil lors d'une connexion
 if (token) {
     loggedInHomepage();
@@ -136,8 +145,6 @@ function editModeBanner() {
 
 // Fonction de déconnexion du mode édition
 function logout() {
-    const loginLink = document.querySelector(".login-link");
-
     if (loginLink) {
         loginLink.textContent = "logout";
 

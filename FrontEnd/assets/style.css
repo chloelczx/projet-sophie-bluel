@@ -455,12 +455,4 @@ input[type="file"] {
 #upload-work {
 	background-color: #A7A7A7;
 }
-
-.visible {
-	display: block;
-}
-
-.hidden {
-	display: none;
-}
 /** **/
