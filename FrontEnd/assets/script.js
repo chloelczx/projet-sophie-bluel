@@ -1,3 +1,6 @@
+// Imports
+import { openModal } from "./modal.js";
+
 // Variables globales
 const gallery = document.querySelector(".gallery");
 let allWorks = [];
@@ -113,11 +116,15 @@ loginLink.addEventListener("click", () => {
     window.location.href = "admin.html";
 });
 
-
-
 // Appel fonction d'affichage page d'accueil lors d'une connexion
 if (token) {
     loggedInHomepage();
+
+    // Appel fonction d'affichage modale
+    const openModalBtn = document.querySelector(".edit-mode-btn");
+    if (openModalBtn) {
+        openModalBtn.addEventListener("click", openModal);
+    }
 }
 
 // Fonction d'affichage page d'accueil lors d'une connexion
@@ -155,7 +162,7 @@ function logout() {
     }
 }
 
-// Fonction bouton d'édition
+// Fonction d'affichage du bouton d'édition
 function editModeBtn() {
     const portfolioTitle = document.querySelector("#portfolio h2");
 
