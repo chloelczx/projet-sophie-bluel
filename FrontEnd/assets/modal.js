@@ -1,5 +1,9 @@
 // Variables globales
 const modal = document.getElementById("modal");
+const closeModalBtn = document.querySelector(".close-modal");
+const modalGallery = document.querySelector(".modal-gallery");
+const modalForm = document.querySelector(".modal-form");
+const openFormBtn = document.querySelector(".open-modal-form");
 
 
 
@@ -51,7 +55,6 @@ function closeModal () {
 }
 
 // Appel fonction de fermeture de la modale au clic sur la croix
-const closeModalBtn = document.querySelector(".close-modal");
 closeModalBtn.addEventListener("click", closeModal);
 
 // Appel fonction de fermeture au clic en dehors de la modale
@@ -60,3 +63,14 @@ modal.addEventListener("click", (e) => {
         closeModal();
     }
 });
+
+
+
+// Fonction d'ouverture du formulaire de la modale
+function openModalForm () {
+    modalGallery.classList.add("hidden");
+    modalForm.classList.add("visible");
+}
+
+// Appel fonction d'ouverture du formulaire
+openFormBtn.addEventListener("click", openModalForm);
