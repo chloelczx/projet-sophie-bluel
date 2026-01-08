@@ -4,6 +4,7 @@ const closeModalBtn = document.querySelector(".close-modal");
 const modalGallery = document.querySelector(".modal-gallery");
 const modalForm = document.querySelector(".modal-form");
 const openFormBtn = document.querySelector(".open-modal-form");
+const backGalleryBtn = document.querySelector(".back-modal-gallery");
 
 
 
@@ -74,3 +75,14 @@ function openModalForm () {
 
 // Appel fonction d'ouverture du formulaire
 openFormBtn.addEventListener("click", openModalForm);
+
+
+
+// Fonction de retour à la galerie de la modale
+function backModalGallery () {
+    modalGallery.classList.remove("hidden");
+    modalForm.classList.remove("visible");
+}
+
+// Appel fonction de retour à la galerie
+backGalleryBtn.addEventListener("click", backModalGallery);
