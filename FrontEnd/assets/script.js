@@ -10,9 +10,9 @@ const token = localStorage.getItem("token");
 
 
 
-// Fonction d'affichage des projets dans la gallerie
+// Fonction d'affichage des travaux dans la galerie
 function displayWorks(works) {
-    // Suppression contenu HTML des projets
+    // Suppression contenu HTML des travaux
     gallery.innerHTML = "";
 
     works.forEach(work => {
@@ -30,7 +30,7 @@ function displayWorks(works) {
     });
 }
 
-// Appel API pour récupérer les projets de l'architecte
+// Appel API pour récupérer les travaux de l'architecte
 async function getWorks() {
     const worksResponse = await fetch("http://localhost:5678/api/works");
     allWorks = await worksResponse.json();
@@ -42,7 +42,7 @@ getWorks();
 
 
 
-// Appel API pour récupérer les catégories de projets
+// Appel API pour récupérer les catégories de travaux
 async function getCategories() {
     const categoriesResponse = await fetch("http://localhost:5678/api/categories");
     const categories = await categoriesResponse.json();
@@ -123,7 +123,7 @@ if (token) {
     // Appel fonction d'affichage modale
     const openModalBtn = document.querySelector(".edit-mode-btn");
     if (openModalBtn) {
-        openModalBtn.addEventListener("click", openModal);
+        openModalBtn.addEventListener("click", () => openModal(allWorks));
     }
 }
 
