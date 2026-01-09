@@ -27,6 +27,7 @@ function displayWorksInModal() {
         const deleteWorkBtn = document.createElement("button");
         deleteWorkBtn.classList.add("delete-work-btn");
         deleteWorkBtn.setAttribute("aria-label", "Supprimer la photo");
+        deleteWorkBtn.dataset.id = work.id;
 
         const deleteWorkIcon = document.createElement("i");
         deleteWorkIcon.classList.add("fa-solid", "fa-trash-can");
