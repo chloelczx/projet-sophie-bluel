@@ -1,18 +1,23 @@
+// Imports
+import { getAllWorks } from "./works.js";
+
 // Variables globales
 const modal = document.getElementById("modal");
-const closeModalBtn = document.querySelector(".close-modal");
 const modalGallery = document.querySelector(".modal-gallery");
+const modalWorksContainer = document.querySelector(".modal-works");
 const modalForm = document.querySelector(".modal-form");
 const openFormBtn = document.querySelector(".open-modal-form");
+const closeModalBtn = document.querySelector(".close-modal");
 const backGalleryBtn = document.querySelector(".back-modal-gallery");
+const token = localStorage.getItem("token");
 
 
 
 // Fonction d'affichage des travaux dans la galerie de la modale
-function displayWorksInModal (allWorks) {
-    const modalWorksContainer = document.querySelector(".modal-works");
+function displayWorksInModal() {
     modalWorksContainer.innerHTML = "";
-    
+    const allWorks = getAllWorks();
+
     allWorks.forEach(work => {
         const modalWorkContent = document.createElement("figure");
         const modalWorkImg = document.createElement("img");
@@ -22,6 +27,7 @@ function displayWorksInModal (allWorks) {
         const deleteWorkBtn = document.createElement("button");
         deleteWorkBtn.classList.add("delete-work-btn");
         deleteWorkBtn.setAttribute("aria-label", "Supprimer la photo");
+
         const deleteWorkIcon = document.createElement("i");
         deleteWorkIcon.classList.add("fa-solid", "fa-trash-can");
 
@@ -35,20 +41,20 @@ function displayWorksInModal (allWorks) {
 
 
 // Fonction d'affichage de la modale
-export function openModal (allWorks) {
+export function openModal() {
     modal.classList.add("active");
     modal.setAttribute("role", "dialog");
     modal.setAttribute("aria-modal", "true");
     modal.setAttribute("aria-hidden", "false");
 
     // Appel fonction d'affichage des travaux
-    displayWorksInModal(allWorks);
+    displayWorksInModal();
 }
 
 
 
 // Fonction de fermeture de la modale
-function closeModal () {
+function closeModal() {
     modal.classList.remove("active");
     modal.removeAttribute("role", "dialog");
     modal.removeAttribute("aria-modal", "true");
@@ -68,7 +74,7 @@ modal.addEventListener("click", (e) => {
 
 
 // Fonction d'ouverture du formulaire de la modale
-function openModalForm () {
+function openModalForm() {
     modalGallery.classList.add("hidden");
     modalForm.classList.add("visible");
 }
@@ -79,7 +85,7 @@ openFormBtn.addEventListener("click", openModalForm);
 
 
 // Fonction de retour à la galerie de la modale
-function backModalGallery () {
+function backModalGallery() {
     modalGallery.classList.remove("hidden");
     modalForm.classList.remove("visible");
 }

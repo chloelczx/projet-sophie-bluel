@@ -1,10 +1,9 @@
 // Imports
+import { getWorks, getAllWorks } from "./works.js";
 import { openModal } from "./modal.js";
 
 // Variables globales
 const gallery = document.querySelector(".gallery");
-let allWorks = [];
-
 const loginLink = document.querySelector(".login-link");
 const token = localStorage.getItem("token");
 
@@ -30,15 +29,13 @@ function displayWorks(works) {
     });
 }
 
-// Appel API pour récupérer les travaux de l'architecte
-async function getWorks() {
-    const worksResponse = await fetch("http://localhost:5678/api/works");
-    allWorks = await worksResponse.json();
-
-    displayWorks(allWorks);
+// Fonction d'initialisation des travaux
+async function initWorks() {
+    const works = await getWorks();
+    displayWorks(works);
 }
 
-getWorks();
+initWorks();
 
 
 
@@ -87,7 +84,7 @@ getCategories();
 
 
 // Fonction de gestion des filtres au clic
-function clicFilter () {
+function clicFilter() {
     const filtersBtn = document.querySelectorAll(".filter");
 
     filtersBtn.forEach (button => {
@@ -100,9 +97,9 @@ function clicFilter () {
             // Filtrage des travaux : comparaison catégories travaux / filtres
             const category = button.dataset.workCategory;
             if (category === "all") {
-             displayWorks(allWorks);
+             displayWorks(getAllWorks());
             } else {
-                const filteredWorks = allWorks.filter(work => work.categoryId === Number(category));
+                const filteredWorks = getAllWorks().filter(work => work.categoryId === Number(category));
                 displayWorks(filteredWorks);
             }
         });
@@ -123,7 +120,7 @@ if (token) {
     // Appel fonction d'affichage modale
     const openModalBtn = document.querySelector(".edit-mode-btn");
     if (openModalBtn) {
-        openModalBtn.addEventListener("click", () => openModal(allWorks));
+        openModalBtn.addEventListener("click", openModal);
     }
 }
 
