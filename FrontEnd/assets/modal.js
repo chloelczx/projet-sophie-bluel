@@ -1,5 +1,5 @@
 // Imports
-import { getAllWorks } from "./works.js";
+import { getAllWorks, deleteWork } from "./works.js";
 
 // Variables globales
 const modal = document.getElementById("modal");
@@ -9,7 +9,6 @@ const modalForm = document.querySelector(".modal-form");
 const openFormBtn = document.querySelector(".open-modal-form");
 const closeModalBtn = document.querySelector(".close-modal");
 const backGalleryBtn = document.querySelector(".back-modal-gallery");
-const token = localStorage.getItem("token");
 
 
 
@@ -38,8 +37,6 @@ function displayWorksInModal() {
         modalWorksContainer.append(modalWorkContent);
     });
 }
-
-
 
 // Fonction d'affichage de la modale
 export function openModal() {
