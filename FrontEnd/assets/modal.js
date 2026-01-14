@@ -39,6 +39,9 @@ function displayWorksInModal() {
         deleteWorkBtn.addEventListener("click", async () => {
             try {
                 await deleteWork(work.id);
+                // Mise à jour du DOM : galerie page d'accueil
+                displayWorks(getAllWorks());
+                // Mise à jour du DOM : galerie modale
                 displayWorksInModal();
             } catch (error) {
                 alert(error.message);
