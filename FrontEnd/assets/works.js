@@ -28,6 +28,6 @@ export async function deleteWork(id) {
     if (deleteWorkResponse.ok) {
         allWorks = allWorks.filter(work => work.id !== id);
     } else {
-        throw new Error("Erreur suppression");
+        throw new Error("Erreur lors de la suppression");
     }
 }

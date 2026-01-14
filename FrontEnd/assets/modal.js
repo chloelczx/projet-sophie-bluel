@@ -26,8 +26,6 @@ function displayWorksInModal() {
         const deleteWorkBtn = document.createElement("button");
         deleteWorkBtn.classList.add("delete-work-btn");
         deleteWorkBtn.setAttribute("aria-label", "Supprimer la photo");
-        deleteWorkBtn.dataset.id = work.id;
-
         const deleteWorkIcon = document.createElement("i");
         deleteWorkIcon.classList.add("fa-solid", "fa-trash-can");
 
@@ -35,6 +33,16 @@ function displayWorksInModal() {
         modalWorkContent.appendChild(modalWorkImg);
         modalWorkContent.appendChild(deleteWorkBtn);
         modalWorksContainer.append(modalWorkContent);
+
+        // Appel fonction de suppression des travaux
+        deleteWorkBtn.addEventListener("click", async () => {
+            try {
+                await deleteWork(work.id);
+                displayWorksInModal();
+            } catch (error) {
+                alert(error.message);
+            }
+        });
     });
 }
 
