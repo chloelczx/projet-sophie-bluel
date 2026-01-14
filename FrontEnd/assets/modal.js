@@ -1,4 +1,5 @@
 // Imports
+import { displayWorks } from "./gallery.js";
 import { getAllWorks, deleteWork } from "./works.js";
 
 // Variables globales
