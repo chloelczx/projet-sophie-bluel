@@ -10,6 +10,8 @@ const modalForm = document.querySelector(".modal-form");
 const openFormBtn = document.querySelector(".open-modal-form");
 const closeModalBtn = document.querySelector(".close-modal");
 const backGalleryBtn = document.querySelector(".back-modal-gallery");
+const uploadImgContainer = document.querySelector(".upload-image");
+const uploadImgBtn = document.getElementById("upload-btn");
 
 
 
@@ -91,6 +93,22 @@ function openModalForm() {
 
 // Appel fonction d'ouverture du formulaire
 openFormBtn.addEventListener("click", openModalForm);
+
+
+
+// Ecoute de l'événement : preview sélection nouvelle image
+uploadImgBtn.addEventListener("change", () => {
+    const selectedFile = uploadImgBtn.files[0];
+    
+    uploadImgContainer.innerHTML = "";
+
+    const imgPreview = document.createElement("img");
+    imgPreview.classList.add("image-preview");
+    imgPreview.src = URL.createObjectURL(selectedFile);
+    imgPreview.alt = "Prévisualisation de l'image";
+
+    uploadImgContainer.appendChild(imgPreview);
+});
 
 
 

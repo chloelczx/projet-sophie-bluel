@@ -443,8 +443,10 @@ footer nav ul {
 	border-radius: 3px;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
-	padding: 20px 0;
+	height: 170px;
+	overflow: hidden;
 }
 
 .upload-image i {
@@ -468,6 +470,10 @@ input[type="file"] {
 .image-info {
 	color: #444444;
 	font-size: 10px;
+}
+
+.image-preview {
+	width: 30%;
 }
 
 .select-wrapper {
