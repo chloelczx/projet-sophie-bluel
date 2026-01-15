@@ -476,6 +476,13 @@ input[type="file"] {
 	width: 30%;
 }
 
+#work-title, #work-category {
+	color: #444444;
+	font-family: 'Work Sans';
+	font-size: 14px;
+	padding-left: 15px;
+}
+
 .select-wrapper {
 	position: relative;
 }

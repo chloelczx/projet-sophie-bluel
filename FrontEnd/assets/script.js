@@ -1,6 +1,6 @@
 // Imports
 import { displayWorks } from "./gallery.js";
-import { getWorks, getAllWorks } from "./works.js";
+import { getWorks, getAllWorks, getCategories } from "./works.js";
 import { openModal } from "./modal.js";
 
 // Variables globales
@@ -20,10 +20,9 @@ initWorks();
 
 
 
-// Appel API pour récupérer les catégories de travaux
-async function getCategories() {
-    const categoriesResponse = await fetch("http://localhost:5678/api/categories");
-    const categories = await categoriesResponse.json();
+// Fonction d'affichage des filtres de la galerie
+async function displayFilters() {
+    const categories = await getCategories();
 
     // Affichage des filtres
     const portfolio = document.getElementById("portfolio");
@@ -60,7 +59,7 @@ async function getCategories() {
     }
 }
 
-getCategories();
+displayFilters();
 
 
 

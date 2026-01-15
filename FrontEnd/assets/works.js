@@ -18,6 +18,14 @@ export function getAllWorks() {
 
 
 
+// Appel API pour récupérer les catégories de travaux
+export async function getCategories() {
+    const categoriesResponse = await fetch("http://localhost:5678/api/categories");
+    return await categoriesResponse.json();
+}
+
+
+
 // Fonction de suppression des travaux
 export async function deleteWork(id) {
     const deleteWorkResponse = await fetch(`http://localhost:5678/api/works/${id}`, {
