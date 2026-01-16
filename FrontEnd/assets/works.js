@@ -1,6 +1,5 @@
 // Variables globales
 let allWorks = [];
-const token = localStorage.getItem("token");
 
 
 
@@ -28,6 +27,8 @@ export async function getCategories() {
 
 // Fonction de suppression des travaux
 export async function deleteWork(id) {
+    const token = localStorage.getItem("token");
+
     const deleteWorkResponse = await fetch(`http://localhost:5678/api/works/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },

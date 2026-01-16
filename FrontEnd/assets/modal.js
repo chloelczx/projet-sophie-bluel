@@ -5,12 +5,8 @@ import { getAllWorks, getCategories, deleteWork } from "./works.js";
 // Variables globales
 const modal = document.getElementById("modal");
 const modalGallery = document.querySelector(".modal-gallery");
-const modalWorksContainer = document.querySelector(".modal-works");
 const modalForm = document.querySelector(".modal-form");
-const openFormBtn = document.querySelector(".open-modal-form");
-const closeModalBtn = document.querySelector(".close-modal");
-const backGalleryBtn = document.querySelector(".back-modal-gallery");
-const uploadImgContainer = document.querySelector(".upload-image");
+const addWorkForm = document.querySelector(".add-work-form");
 const uploadImgBtn = document.getElementById("upload-btn");
 const selectCategory = document.getElementById("work-category");
 
@@ -18,9 +14,10 @@ const selectCategory = document.getElementById("work-category");
 
 // Fonction d'affichage des travaux dans la galerie de la modale
 function displayWorksInModal() {
+    const modalWorksContainer = document.querySelector(".modal-works");
     modalWorksContainer.innerHTML = "";
-    const allWorks = getAllWorks();
 
+    const allWorks = getAllWorks();
     allWorks.forEach(work => {
         const modalWorkContent = document.createElement("figure");
         const modalWorkImg = document.createElement("img");
@@ -76,20 +73,47 @@ function openModalForm() {
 }
 
 // Appel fonction d'ouverture du formulaire
+const openFormBtn = document.querySelector(".open-modal-form");
 openFormBtn.addEventListener("click", openModalForm);
+
+// Création du message d'erreur
+const errorMessage = document.createElement("p");
+errorMessage.classList.add("upload-error");
+errorMessage.textContent = "L'image doit être au format jpg, png : 4mo max";
 
 // Ecoute de l'événement : preview sélection nouvelle image
 uploadImgBtn.addEventListener("change", () => {
     const selectedFile = uploadImgBtn.files[0];
-    
-    uploadImgContainer.innerHTML = "";
+    const validFiles = ["image/jpeg", "image/png"];
+    const maxSize = 4 * 1024 * 1024;
 
-    const imgPreview = document.createElement("img");
-    imgPreview.classList.add("image-preview");
-    imgPreview.src = URL.createObjectURL(selectedFile);
-    imgPreview.alt = "Prévisualisation de l'image";
+    if (!selectedFile) {
+        return;
+    }
 
-    uploadImgContainer.appendChild(imgPreview);
+    if (!validFiles.includes(selectedFile.type) || selectedFile.size > maxSize) {
+        addWorkForm.appendChild(errorMessage);
+
+        uploadImgBtn.value = "";
+        return;
+    } else {
+        const uploadImgContainer = document.querySelector(".upload-image");
+        uploadImgContainer.innerHTML = "";
+
+        const imgPreview = document.createElement("img");
+        imgPreview.classList.add("image-preview");
+        imgPreview.src = URL.createObjectURL(selectedFile);
+        imgPreview.alt = "Prévisualisation de l'image";
+
+        uploadImgContainer.appendChild(imgPreview);
+    }
+});
+
+// Ecoute de l'événement : suppression message d'erreur au clic
+uploadImgBtn.addEventListener("click", () => {
+    if (addWorkForm.contains(errorMessage)) {
+        errorMessage.remove();
+    }
 });
 
 // Fonction d'affichage des catégories dans le formulaire
@@ -106,6 +130,31 @@ async function loadFormCategories() {
     });
 }
 
+// Fonction de vérification des champs du formulaire
+function checkModalForm() {
+    const formWorkTitle = document.getElementById("work-title");
+    const formSubmitBtn = document.getElementById("upload-work");
+    
+    const workFileSelected = uploadImgBtn.files.length > 0;
+    const workTitleFilled = formWorkTitle.value.trim() !== "";
+    const workCategorySelected = selectCategory.value !== "";
+
+    if (workFileSelected && workTitleFilled && workCategorySelected) {
+        formSubmitBtn.disabled = false;
+    } else {
+        formSubmitBtn.disabled = true;
+    }
+}
+
+// Appel fonction de vérification des champs
+addWorkForm.addEventListener("change", checkModalForm);
+addWorkForm.addEventListener("input", checkModalForm);
+
+// Ecoute de l'événement : envoi du formulaire
+addWorkForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+});
+
 
 
 // Fonction de retour à la galerie de la modale
@@ -115,6 +164,7 @@ function backModalGallery() {
 }
 
 // Appel fonction de retour à la galerie
+const backGalleryBtn = document.querySelector(".back-modal-gallery");
 backGalleryBtn.addEventListener("click", backModalGallery);
 
 
@@ -128,6 +178,7 @@ function closeModal() {
 }
 
 // Appel fonction de fermeture de la modale au clic sur la croix
+const closeModalBtn = document.querySelector(".close-modal");
 closeModalBtn.addEventListener("click", closeModal);
 
 // Appel fonction de fermeture au clic en dehors de la modale

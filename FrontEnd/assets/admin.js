@@ -1,22 +1,19 @@
-// Variables globales
-const loginForm = document.querySelector("form");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-
-
-
 // Création du message d'erreur
 const errorMessage = document.createElement("p");
 errorMessage.classList.add("login-error");
 errorMessage.textContent = "Erreur dans l'identifiant ou le mot de passe";
 
 // Ecoute de l'événement : envoi du formulaire
+const loginForm = document.querySelector("form");
+
 loginForm.addEventListener("submit", async (event) => {
     // Bloque le rechargement de la page par défaut de l'input type submit
     event.preventDefault();
 
     // Requête POST à l'API : envoi des valeurs du formulaire
+    const emailInput = document.getElementById("email");
     const email = emailInput.value;
+    const passwordInput = document.getElementById("password");
     const password = passwordInput.value;
 
     const loginResponse = await fetch("http://localhost:5678/api/users/login", {

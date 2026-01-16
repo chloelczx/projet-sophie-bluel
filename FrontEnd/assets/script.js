@@ -4,7 +4,6 @@ import { getWorks, getAllWorks, getCategories } from "./works.js";
 import { openModal } from "./modal.js";
 
 // Variables globales
-const gallery = document.querySelector(".gallery");
 const loginLink = document.querySelector(".login-link");
 const token = localStorage.getItem("token");
 
@@ -23,6 +22,8 @@ initWorks();
 // Fonction d'affichage des filtres de la galerie
 async function displayFilters() {
     const categories = await getCategories();
+
+    const gallery = document.querySelector(".gallery");
 
     // Affichage des filtres
     const portfolio = document.getElementById("portfolio");

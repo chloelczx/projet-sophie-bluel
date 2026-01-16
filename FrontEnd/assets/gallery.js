@@ -1,10 +1,7 @@
-// Variables globales
-const gallery = document.querySelector(".gallery");
-
-
-
 // Fonction d'affichage des travaux dans la galerie
 export function displayWorks(works) {
+    const gallery = document.querySelector(".gallery");
+
     // Suppression contenu HTML des travaux
     gallery.innerHTML = "";
 

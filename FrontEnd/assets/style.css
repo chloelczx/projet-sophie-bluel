@@ -317,8 +317,10 @@ footer nav ul {
 	border-radius: 10px;
 	box-sizing: border-box;
 	width: 630px;
+	max-height: 670px;
 	padding: 60px 90px 0;
 	position: relative;
+	overflow-y: auto;
 }
 
 .modal-wrapper h3 {
@@ -499,5 +501,18 @@ input[type="file"] {
 #upload-work {
 	background-color: #A7A7A7;
 	width: 250px;
-} 
+}
+
+#upload-work:not(:disabled) {
+	background-color: #1D6154;
+}
+
+#upload-work:not(:disabled):hover {
+	background-color: #0E2F28;
+}
+
+.upload-error {
+	color: #B1663C;
+	margin: 0 auto 2em auto;
+}
 /** **/
