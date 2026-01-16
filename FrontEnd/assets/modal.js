@@ -8,6 +8,7 @@ const modalGallery = document.querySelector(".modal-gallery");
 const modalForm = document.querySelector(".modal-form");
 const addWorkForm = document.querySelector(".add-work-form");
 const uploadImgBtn = document.getElementById("upload-btn");
+const formWorkTitle = document.getElementById("work-title");
 const selectCategory = document.getElementById("work-category");
 
 
@@ -132,7 +133,6 @@ async function loadFormCategories() {
 
 // Fonction de vérification des champs du formulaire
 function checkModalForm() {
-    const formWorkTitle = document.getElementById("work-title");
     const formSubmitBtn = document.getElementById("upload-work");
     
     const workFileSelected = uploadImgBtn.files.length > 0;
@@ -151,8 +151,29 @@ addWorkForm.addEventListener("change", checkModalForm);
 addWorkForm.addEventListener("input", checkModalForm);
 
 // Ecoute de l'événement : envoi du formulaire
-addWorkForm.addEventListener("submit", (event) => {
+addWorkForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("image", uploadImgBtn.files[0]);
+    formData.append("title", formWorkTitle.value);
+    formData.append("category", selectCategory.value);
+
+    const token = localStorage.getItem("token");
+
+    try {
+        const addWorkResponse = await fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: { Authorization: `Bearer ${token}` },
+            body: formData
+        });
+
+        if (!addWorkResponse.ok) {
+            throw new Error("Erreur lors de l'ajout");
+        }
+    } catch (error) {
+        alert(error.message);
+    }
 });
 
 
