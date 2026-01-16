@@ -1,6 +1,6 @@
 // Imports
 import { displayWorks } from "./gallery.js";
-import { getAllWorks, getCategories, deleteWork } from "./works.js";
+import { getAllWorks, getCategories, deleteWork, addWork } from "./works.js";
 
 // Variables globales
 const modal = document.getElementById("modal");
@@ -171,6 +171,12 @@ addWorkForm.addEventListener("submit", async (event) => {
         if (!addWorkResponse.ok) {
             throw new Error("Erreur lors de l'ajout");
         }
+
+        const newWork = await addWorkResponse.json();
+        addWork(newWork);
+        displayWorks(getAllWorks());
+        displayWorksInModal();
+        closeModal();
     } catch (error) {
         alert(error.message);
     }

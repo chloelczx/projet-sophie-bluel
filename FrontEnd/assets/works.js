@@ -40,3 +40,10 @@ export async function deleteWork(id) {
         throw new Error("Erreur lors de la suppression");
     }
 }
+
+
+
+// Fonction d'ajout des travaux
+export function addWork(work) {
+    allWorks.push(work);
+}
