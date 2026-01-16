@@ -7,6 +7,8 @@ const modal = document.getElementById("modal");
 const modalGallery = document.querySelector(".modal-gallery");
 const modalForm = document.querySelector(".modal-form");
 const addWorkForm = document.querySelector(".add-work-form");
+const uploadImgContainer = document.querySelector(".upload-image");
+const uploadImgHTML = uploadImgContainer.innerHTML;
 const uploadImgBtn = document.getElementById("upload-btn");
 const formWorkTitle = document.getElementById("work-title");
 const selectCategory = document.getElementById("work-category");
@@ -98,7 +100,6 @@ uploadImgBtn.addEventListener("change", () => {
         uploadImgBtn.value = "";
         return;
     } else {
-        const uploadImgContainer = document.querySelector(".upload-image");
         uploadImgContainer.innerHTML = "";
 
         const imgPreview = document.createElement("img");
@@ -154,12 +155,12 @@ addWorkForm.addEventListener("input", checkModalForm);
 addWorkForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    const token = localStorage.getItem("token");
+    
     const formData = new FormData();
     formData.append("image", uploadImgBtn.files[0]);
     formData.append("title", formWorkTitle.value);
     formData.append("category", selectCategory.value);
-
-    const token = localStorage.getItem("token");
 
     try {
         const addWorkResponse = await fetch("http://localhost:5678/api/works", {
@@ -202,6 +203,14 @@ function closeModal() {
     modal.removeAttribute("role", "dialog");
     modal.removeAttribute("aria-modal", "true");
     modal.setAttribute("aria-hidden", "true");
+
+    // Retour à la galerie
+    modalGallery.classList.remove("hidden");
+    modalForm.classList.remove("visible");
+
+    // Appel fonction de réinitialisation du formulaire
+    resetModalForm();
+    checkModalForm();
 }
 
 // Appel fonction de fermeture de la modale au clic sur la croix
@@ -214,3 +223,14 @@ modal.addEventListener("click", (e) => {
         closeModal();
     }
 });
+
+// Fonction de réinitialisation du formulaire
+function resetModalForm() {
+    addWorkForm.reset();
+
+    uploadImgContainer.innerHTML = uploadImgHTML;
+
+    if (addWorkForm.contains(errorMessage)) {
+        errorMessage.remove();
+    }
+}
