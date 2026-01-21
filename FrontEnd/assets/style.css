@@ -148,7 +148,10 @@ li:hover {
 }
 
 .title-wrapper {
-	margin-bottom: 30px;
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	margin: 0 auto 30px;
 	position: relative;
 }
 
@@ -158,8 +161,7 @@ li:hover {
 	align-items: center;
 	gap: 10px;
 	position: absolute;
-	top: 25%;
-	right: 32%;
+	right: -8em;
 }
 /** **/
 
@@ -199,6 +201,8 @@ li:hover {
 }
 .gallery img {
 	width: 100%;
+	height: 490px;
+	object-fit: cover;
 }
 #contact {
 	width: 50%;
@@ -317,7 +321,7 @@ footer nav ul {
 	border-radius: 10px;
 	box-sizing: border-box;
 	width: 630px;
-	max-height: 670px;
+	max-height: 680px;
 	padding: 60px 90px 0;
 	position: relative;
 	overflow-y: auto;
@@ -386,6 +390,8 @@ footer nav ul {
 
 .modal-works img {
 	width: 100%;
+	height: 109px;
+	object-fit: cover;
 }
 
 .delete-work-btn {

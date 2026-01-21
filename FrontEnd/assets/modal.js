@@ -8,7 +8,6 @@ const modalGallery = document.querySelector(".modal-gallery");
 const modalForm = document.querySelector(".modal-form");
 const addWorkForm = document.querySelector(".add-work-form");
 const uploadImgContainer = document.querySelector(".upload-image");
-const uploadImgHTML = uploadImgContainer.innerHTML;
 const uploadImgBtn = document.getElementById("upload-btn");
 const formWorkTitle = document.getElementById("work-title");
 const selectCategory = document.getElementById("work-category");
@@ -100,7 +99,7 @@ uploadImgBtn.addEventListener("change", () => {
         uploadImgBtn.value = "";
         return;
     } else {
-        uploadImgContainer.innerHTML = "";
+        [...uploadImgContainer.children].forEach(child => child.style.display="none");
 
         const imgPreview = document.createElement("img");
         imgPreview.classList.add("image-preview");
@@ -121,9 +120,9 @@ uploadImgBtn.addEventListener("click", () => {
 // Fonction d'affichage des catégories dans le formulaire
 async function loadFormCategories() {
     const categories = await getCategories();
-    
-    selectCategory.innerHTML = "";
 
+    [...selectCategory.children].slice(1).forEach(opt => opt.remove());
+    
     categories.forEach(category => {
         const option = document.createElement("option");
         option.textContent = category.name;
@@ -199,6 +198,8 @@ backGalleryBtn.addEventListener("click", backModalGallery);
 
 // Fonction de fermeture de la modale
 function closeModal() {
+    document.activeElement?.blur();
+
     modal.classList.remove("active");
     modal.removeAttribute("role", "dialog");
     modal.removeAttribute("aria-modal", "true");
@@ -228,7 +229,11 @@ modal.addEventListener("click", (e) => {
 function resetModalForm() {
     addWorkForm.reset();
 
-    uploadImgContainer.innerHTML = uploadImgHTML;
+    const preview = document.querySelector(".image-preview");
+    if (preview) {
+        preview.remove();
+        [...uploadImgContainer.children].forEach(child => child.style.display="");
+    }
 
     if (addWorkForm.contains(errorMessage)) {
         errorMessage.remove();
